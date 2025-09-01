@@ -1,9 +1,18 @@
 // This script runs on the page to create and manage the floating widget.
 
+let checkInterval; // To hold our interval ID
+let attempts = 0; // To count how many times we've checked
+const maxAttempts = 10; // Check for a total of 10 seconds
+
 /**
  * Creates the floating widget and adds it to the page.
  */
 function createWidget() {
+    // Prevent creating more than one widget
+    if (document.getElementById('form-filler-widget')) {
+        return;
+    }
+
     // Create the widget container
     const widget = document.createElement('div');
     widget.id = 'form-filler-widget';
@@ -31,10 +40,27 @@ function createWidget() {
     });
 }
 
-// Check if there is at least one form on the page before creating the widget.
-// We wait for the window to load to ensure all DOM elements are available.
-window.addEventListener('load', () => {
+/**
+ * Checks for a form element on the page. If found, it creates the widget
+ * and stops the interval.
+ */
+function checkForForm() {
+    attempts++;
+    
+    // If a form is found...
     if (document.querySelector('form')) {
+        console.log('Auto Filler: Form found! Creating widget.');
         createWidget();
+        clearInterval(checkInterval); // Stop checking
     }
-});
+    
+    // Stop checking after max attempts to avoid running forever
+    if (attempts >= maxAttempts) {
+        clearInterval(checkInterval);
+    }
+}
+
+// Instead of waiting for a single 'load' event, start checking repeatedly.
+// This handles forms that are loaded dynamically after the initial page load.
+checkInterval = setInterval(checkForForm, 1000); // Check every 1 second
+

@@ -1,15 +1,22 @@
 {
   "manifest_version": 3,
   "name": "Form Auto Filler Widget",
-  "version": "1.1",
-  "description": "Detects forms and shows a floating widget to auto-fill them.",
-  "permissions": [],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "css": ["style.css"],
-      "js": ["filler.js", "content.js"]
-    }
-  ]
+  "version": "2.0",
+  "description": "Shows a floating widget to auto-fill forms on specific websites you approve.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "settings.html",
+  "action": {
+    "default_title": "Form Auto Filler Settings"
+  }
 }
 

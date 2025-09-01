@@ -36,9 +36,9 @@ function fillForms() {
             const randomPhone = Math.floor(1000000000 + Math.random() * 9000000000).toString();
             input.value = randomPhone;
         } else if (nameLower.includes('contactcompanyname')) {
-            input.value = "TestCorp Inc.";
+            input.value = "Test";
         } else if (nameLower.includes('projectlocationsuburb')) {
-            input.value = "Mandaluyong";
+            input.value = "Test";
         } else if (nameLower.includes('transactiontype')) {
             // Specific rule to always select "Buy"
             input.value = "Buy";
