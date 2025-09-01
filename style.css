@@ -1,0 +1,50 @@
+/* Styles for the floating auto-fill widget */
+#form-filler-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99999;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 220px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease-in-out;
+}
+
+#form-filler-widget:hover {
+    transform: translateY(-5px);
+}
+
+#form-filler-widget .widget-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+#form-filler-widget .widget-text {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+#form-filler-widget button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+#form-filler-widget button:hover {
+    background-color: #0056b3;
+}
