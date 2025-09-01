@@ -14,6 +14,7 @@ function getRandomInt(min, max) {
 
 /**
  * Fills form fields on the page with specific and generated data.
+ * This function should ONLY be called by a user action (e.g., button click).
  */
 function fillForms() {
     const inputs = document.querySelectorAll('input, select, textarea');
@@ -37,7 +38,7 @@ function fillForms() {
         } else if (nameLower.includes('contactcompanyname')) {
             input.value = "TestCorp Inc.";
         } else if (nameLower.includes('projectlocationsuburb')) {
-            input.value = "Testville";
+            input.value = "Mandaluyong";
         } else if (nameLower.includes('transactiontype')) {
             // Specific rule to always select "Buy"
             input.value = "Buy";
@@ -48,7 +49,7 @@ function fillForms() {
                 input.selectedIndex = 1;
             }
         } else if (nameLower.includes('email')) {
-             input.value = `test.user${getRandomInt(1, 1000)}@example.com`;
+             input.value = `test.user${getRandomInt(1, 1000)}@test.com`;
         } else if (input.tagName.toLowerCase() === 'textarea') {
             input.value = "This is an automated test message from the Form Auto Filler extension.";
         }
@@ -59,9 +60,6 @@ function fillForms() {
         input.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    console.log('Form Auto Filler: Fields have been populated with custom logic!');
+    console.log('Form Auto Filler: Fields have been populated by widget click!');
 }
-
-// Run the function to fill the forms
-fillForms();
 
